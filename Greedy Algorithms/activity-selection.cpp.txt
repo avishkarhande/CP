@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+class activity{
+  public:
+    ll start,end;
+};
+
+bool actcompare(activity a1,activity a2){
+    return a1.end<a2.end;
+}
+
+int main()
+{
+    activity a1,a2,a3;
+    a1.start = 12;
+    a1.end = 25;
+    a2.start = 10;
+    a2.end = 20;
+    a3.start = 20;
+    a3.end = 30;
+    vector<activity>v;
+    v.push_back(a1);
+    v.push_back(a2);
+    v.push_back(a3);
+    sort(v.begin(),v.end(),actcompare);
+    // for(auto x:v){
+    //     cout<<x.start<<" "<<x.end<<endl;
+    // }
+    cout<<v[0].start<<" "<<v[0].end<<endl;
+    ll j=0;
+    for(int i=0;i<v.size();i++){
+        if(v[i].start>=v[j].end){
+            cout<<v[i].start<<" "<<v[i].end<<endl;
+            j=i;
+        }
+    }
+}
